@@ -4,21 +4,12 @@ package com.example.composetest01
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.animation.animateContentSize
-import androidx.compose.animation.core.animate
 import androidx.compose.foundation.*
-import androidx.compose.foundation.gestures.FlingBehavior
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.MaterialTheme.colors
 import androidx.compose.material.MaterialTheme.typography
-import androidx.compose.material.SnackbarDefaults.backgroundColor
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.KeyboardArrowDown
-import androidx.compose.material.icons.filled.KeyboardArrowUp
-import androidx.compose.material.icons.filled.MoreVert
-import androidx.compose.material.icons.filled.Place
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
@@ -30,11 +21,10 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.composetest01.ui.theme.ComponentWidget.ArtistCard
+import com.example.composetest01.ui.theme.ComponentWidget.GenerateToolBar
 import com.example.composetest01.ui.theme.ComposeTest01Theme
 import com.example.composetest01.ui.theme.ExpandingCard
-import com.example.composetest01.ui.theme.Typography
-import com.example.composetest01.ui.theme.showToast
-import com.google.android.material.appbar.AppBarLayout
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -65,36 +55,6 @@ fun MyApp() {
     }
 }
 
-@Composable
-fun GenerateToolBar() {
-//    Row(
-//        Modifier
-//            .background(colors.primary)
-//            .height(60.dp)
-//            .fillMaxWidth()
-//            .padding(start = 20.dp, top = 15.dp, bottom = 10.dp, end = 10.dp),
-//        Arrangement.Center
-//    ) {
-//        Text(
-//            text = "Jetpack Compose",
-//            color = Color.White,
-//            style = typography.h6,
-//        )
-//    }
-    TopAppBar(title = {
-        Text(
-            text = "Jetpack Compose",
-            color = Color.White
-        )
-    }, navigationIcon = {
-        Icon(
-            painter = painterResource(id = R.drawable.ic_launcher_foreground),
-            contentDescription = null,
-            Modifier
-                .clip(RoundedCornerShape(5.dp))
-                .clickable { "Title Icon has been clicked.".showToast() })
-    })
-}
 
 @Composable
 fun NewsStory(name: String) {
@@ -223,6 +183,10 @@ fun NewsStory(name: String) {
                         "2.更新状态：使用赋值方法在 onClick 监听器中更改了 expanded。\n" +
                         "3.显示状态：ExpandingCard 会重组，因为 expanded 是已更改的 State<Boolean>，并且 ExpandingCard 在 if(expanded) 代码行中读取相应的值。ExpandingCard 随后会根据 expanded 的新值描述屏幕。"
             )
+
+            Spacer(Modifier.height(16.dp))
+
+            ArtistCard()
         }
     }
 }
